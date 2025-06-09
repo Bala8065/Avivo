@@ -1,17 +1,17 @@
-Section 2: Web UI Test Automation
-Scenario: Use a demo login page (e.g., https://the-internet.herokuapp.com/login)
-Task:
-Create an automation script using Selenium / Cypress / Playwright (any preferred framework) to:
-Open the login page
-Input username & password
-Click login and verify success/error message
-Add assertions for UI element visibility, error messages, and title/url changes.
-Explanation: Below code is written in selenium python, Environment is pycharm, three test case has written 
-Valid user name and password / URL checked &  Title checked 
-Invalid username 
-Invalid password
+#Section 2: Web UI Test Automation
+#Scenario: Use a demo login page (e.g., https://the-internet.herokuapp.com/login)
+#Task:
+#Create an automation script using Selenium / Cypress / Playwright (any preferred framework) to:
+#Open the login page
+#Input username & password
+#Click login and verify success/error message
+#Add assertions for UI element visibility, error messages, and title/url changes.
+#Explanation: Below code is written in selenium python, Environment is pycharm, three test case has written 
+#1. Valid user name and password / URL checked &  Title checked 
+#2. Invalid username 
+#3. Invalid password
 
-
+#Code:
 
 import pytest
 from selenium import webdriver
