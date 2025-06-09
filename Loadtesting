@@ -1,0 +1,40 @@
+Load testing 
+
+1. Test Plan
+Name: Aviovtestplan
+
+2. Thread Group
+Name: Login
+Number of Threads (Users): 10 (increase to 50 for full load)
+Ramp-Up Period (in seconds): 10
+Loop Count: 10 (each user sends 10 requests)
+
+3. HTTP Request Defaults
+Server Name or IP: reqres.in
+Protocol: https
+Path: /api/login
+
+4. HTTP Header Manager
+Add the following headers:
+Content-Type: application/json
+
+5. HTTP Request
+Method: POST
+Path: /api/login
+Body Data (check "Use Raw Body"):
+
+json
+{
+  "email": "eve.holt@reqres.in",
+  "password": "cityslicka"
+}
+
+6. Listeners
+Add the following listeners to capture performance:
+View Results Tree
+Aggregate Report
+Summary Report
+
+Sample Test Report (from Aggregate Report) -> Attached 
+
+
