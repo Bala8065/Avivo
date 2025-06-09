@@ -35,6 +35,14 @@ View Results Tree
 Aggregate Report
 Summary Report
 
-Sample Test Report (from Aggregate Report) -> Attached 
+Sample Test Report (from Aggregate Report) -> Attached in github in csv format name: Aggregate Report.csv
 
+How to Run This Test
+1. Open JMeter.
+2. Load login_load_test.jmx.
+3. Adjust users to 10 or 50.
+4. Run the test.
+5. View results in Aggregate Report.
+6. Export results as .csv or take a screenshot for reporting.
 
+For the screenshot attached in the github and name Aggregate Report.png
