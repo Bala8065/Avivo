@@ -1,0 +1,75 @@
+#Section 3: API Testing (Automation)
+#Scenario: A sample REST API endpoint:
+#POST /api/login
+#Body: { "email": "user@example.com", "password": "123456" }
+#Response: 200 OK (on success), 401 Unauthorized (on failure)
+#Task:
+#Write an automated script using Postman (with test scripts) or a code-based approach (e.g., Python + requests / JavaScript + axios / Java + RestAssured) to validate:
+#Successful login
+#Invalid credentials
+#Missing fields
+#Validate response codes and expected keys in response JSON.
+
+
+#Explanation : Below code is written in python, Environment is pycharm, three test case has written 
+#code:
+
+import unittest
+import requests
+
+
+# Updated Base URL
+BASE_URL = "https://reqres.in/api/login"
+
+
+class TestLoginAPI(unittest.TestCase):
+
+
+   def test_successful_login(self):
+       payload = {
+           "email": "eve.holt@reqres.in",
+           "password": "cityslicka"
+       }
+       response = requests.post(BASE_URL, json=payload)
+       self.assertEqual(response.status_code, 200)
+       self.assertIn("token", response.json())
+
+
+   def test_invalid_credentials(self):
+       payload = {
+           "email": "eve.holt@reqres.in",
+           "password": "wrongpass"
+       }
+       response = requests.post(BASE_URL, json=payload)
+       self.assertEqual(response.status_code, 400)
+       self.assertIn("error", response.json())
+
+
+   def test_missing_email(self):
+       payload = {
+           "password": "cityslicka"
+       }
+       response = requests.post(BASE_URL, json=payload)
+       self.assertEqual(response.status_code, 400)
+       self.assertIn("error", response.json())
+
+
+   def test_missing_password(self):
+       payload = {
+           "email": "eve.holt@reqres.in"
+       }
+       response = requests.post(BASE_URL, json=payload)
+       self.assertEqual(response.status_code, 400)
+       self.assertIn("error", response.json())
+
+
+   def test_empty_body(self):
+       response = requests.post(BASE_URL, json={})
+       self.assertEqual(response.status_code, 400)
+       self.assertIn("error", response.json())
+
+
+
+
+if __name__ == '__main__':
+   unittest.main()
