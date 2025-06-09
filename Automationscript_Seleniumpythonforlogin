@@ -1,1 +1,68 @@
+Section 2: Web UI Test Automation
+Scenario: Use a demo login page (e.g., https://the-internet.herokuapp.com/login)
+Task:
+Create an automation script using Selenium / Cypress / Playwright (any preferred framework) to:
+Open the login page
+Input username & password
+Click login and verify success/error message
+Add assertions for UI element visibility, error messages, and title/url changes.
+Explanation: Below code is written in selenium python, Environment is pycharm, three test case has written 
+Valid user name and password / URL checked &  Title checked 
+Invalid username 
+Invalid password
 
+
+
+import pytest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+
+# Setup for Selenium WebDriver
+@pytest.fixture
+def setup():
+   driver = webdriver.Chrome()
+   driver.maximize_window()
+   yield driver
+   driver.quit()
+
+
+# Positive Test Case: Login
+def test_check_Login(setup):
+   driver = setup
+   driver.get("https://the-internet.herokuapp.com/login")  # Sauce Demo URL
+   driver.find_element(By.ID, "username").send_keys("tomsmith")
+   driver.find_element(By.ID,"password").send_keys("SuperSecretPassword!")
+   driver.find_element(By.XPATH,"/html/body/div[2]/div/div/form/button/i").click()
+
+
+   time.sleep(3)
+   url = driver.current_url
+   assert url == "https://the-internet.herokuapp.com/secure"  # Expected URL after login
+   title = driver.title
+   assert title == "The Internet"                             #Expected Title after login
+
+
+# Negative Test Case: Invalid login user name
+def test_check_Invalidemail(setup):
+   driver = setup
+   driver.get("https://the-internet.herokuapp.com/login")  # Sauce Demo URL
+   driver.find_element(By.ID, "username").send_keys("tomsmit")
+   driver.find_element(By.ID,"password").send_keys("SuperSecretPassword!")
+   driver.find_element(By.XPATH,"/html/body/div[2]/div/div/form/button/i").click()
+   time.sleep(3)
+   errormessage = driver.find_element(By.XPATH,"/html//div[@id='flash']")
+   print(errormessage.text)
+
+
+# Negative Test Case: Invalid login password
+def test_check_Invalidpassword(setup):
+   driver = setup
+   driver.get("https://the-internet.herokuapp.com/login")  # Sauce Demo URL
+   driver.find_element(By.ID, "username").send_keys("tomsmith")
+   driver.find_element(By.ID,"password").send_keys("SuperSecretPassword")
+   driver.find_element(By.XPATH,"/html/body/div[2]/div/div/form/button/i").click()
+   time.sleep(3)
+   errormessage = driver.find_element(By.XPATH,"/html//div[@id='flash']")
+   print(errormessage.text)
