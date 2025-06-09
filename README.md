@@ -11,6 +11,8 @@
 
 **Section 4** 
   Load testing shared in github -> File name: Loadtesting 
+  
       * Subsection 4.1 file name: Avivotestplan.jmx
       * Subsection 4.2 Test report -> file name: Aggregate Report.csv
       * Subsection 4.3 Screenshot -> file name:Aggregate Report.png
+      * Subsection 4.4 Testcase -> File name: AVIVO_task_testcase.docx
